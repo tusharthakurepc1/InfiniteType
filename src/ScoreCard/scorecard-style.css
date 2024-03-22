@@ -1,0 +1,35 @@
+.score-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5% 5%;
+}
+
+.score-container-item{
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.score-item-heading{
+    font-size: 22px;
+    color: white;
+}
+.score-item-value{
+    font-size: 70px;
+    color: #FFE500;
+}
+
+.navigate{
+    display: flex;
+}
+.navigate-btn{
+  outline: none;
+  border: none;
+  width: 80px;
+  height: 35px;
+  box-shadow: 0px 0px 5px white;
+  margin: 0px auto;
+  border-radius: 5px;
+  font-weight: bold;
+}

@@ -1,0 +1,47 @@
+
+.header{
+    display: flex;
+}
+
+.header-left, .header-right{
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+    padding: 10px 0px;
+    margin: 0px auto;
+    align-items: center;
+}
+
+.header-left li, .header-right li{
+    margin: 0px 20px;
+}
+
+.logo{
+    height: 60px;
+}
+
+.bell-logo-img{
+    width: 1rem;
+    height: 1rem;
+    filter: invert(1);
+}
+.profile-logo-img{
+    width: 1.2rem;
+    height: 1.2rem;
+    filter: invert(1);
+}
+
+.setting-logo-img{
+    width: 1.2rem;
+}
+
+
+.leaderboard-logo-img{
+    width: 1.5rem;
+    filter: invert(1);
+}
+.home-logo-img{
+    width: 1.5rem;
+    
+}
+

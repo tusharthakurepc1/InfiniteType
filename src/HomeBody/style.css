@@ -1,0 +1,56 @@
+body{
+    background-color: #3D4748;
+}
+
+._outer{
+    display: flex;
+}
+
+.optiontab{
+    display: flex;
+    margin: 50px auto 30px auto;
+    padding-right: 10px;
+    border-radius: 10px;
+    background-color: rgb(44, 44, 44);
+    color: white;
+}
+
+.optiontab-item{
+    width: max-content;
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+    margin: 10px;
+    padding: 0px;
+}
+.optiontab-item li{
+    margin: 0px 5px;
+}
+
+.division{
+    width: 0px;
+    height: max-content;
+    overflow: hidden;
+    border: 1px solid black;
+    margin: auto 10px;
+}
+
+.option-item-property{
+    color: #74888a;
+}
+
+.option-item-property:hover{
+    color: #FFE500;
+    /* color: white; */
+}
+
+
+.optiontab-hide{
+    display: none;
+}
+
+#optiontab-time, #optiontab-words, #optiontab-quote{
+    display: flex;
+}
+
+

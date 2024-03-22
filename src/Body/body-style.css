@@ -1,0 +1,55 @@
+
+
+.time-container{
+    width: 100%;
+    display: flex;
+}
+.time-content{
+    margin: 0px 0px 0px 5%;
+    padding: 0px 10px;
+    font-size: 32px;
+    color: #FFE500;
+}
+
+
+/* ---------------------------------------------- */
+
+.input-field-text{
+    border: 1px solid red;
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    width: 20%;
+    margin: 10px 5%;
+    height: 30px;
+    opacity: 0.5;
+}
+.inputblock{
+    border: 1px solid red;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 5%;
+    font-size: 1.5rem;
+    font-family: "Roboto Mono", monospace;
+    text-align: left;
+}
+.word{
+    color: rgba(240, 255, 255, 0.212);
+    margin: 7px 5px;
+}
+.letter{
+    background-color: #ffe60000;
+}
+
+.correct{
+    color: white;
+}
+.incorrect{
+    color: #ca4754;
+}
+
+
+.word-1{
+    background-color: rgb(99, 107, 104);
+}
+
