@@ -8,7 +8,23 @@ import ScoreCard from './ScoreCard/ScoreCardMain';
 function App() {
   const [tabFlag, setTabFlag] = useState("optiontab-time");
   const [tabValue, setTabValue] = useState(30);
-  const [scoreCardFlag, setScoreCardFlag] = useState(true);
+  const [scoreCardFlag, setScoreCardFlag] = useState(false);
+
+  const [performance, setPerformance] = useState({
+    total_char: 0,                  // total correct or incorrect char
+    total_word: 0,                  // gross word
+    correct: 0,                     // net word
+    error: 0,
+    wpm: 0,
+    time: tabValue / 60,      // time in minute
+    gross_wpm: 0,                   // gross word / total time in minute
+    net_wpm: 0,                     // net word  / total time in minute
+    acc: 0,                         // net_wpm   * 100 / gross_wpm
+  })
+
+  const setPerformanceData = (value) =>{
+    setPerformance({...value})
+  }
 
   const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
@@ -25,7 +41,7 @@ function App() {
   }
 
   const [data, setData] = useState("Default");
-  const URL = "http://localhost:3500/";
+  const URL = "http://localhost:3100/";
 
   useEffect(()=>{
 
@@ -57,16 +73,26 @@ function App() {
         setFlagTabValue={setFlagTabValue}>
       </OptionTab>
 
+      
 
-      {/* <BodyReact 
-        tabFlag={tabFlag} 
-        tabValue={tabValue} 
-        content={data} 
-        scoreCardValue={scoreCardFlag}
-        setScoreCardValue={setScoreCardValue}>
-      </BodyReact> */}
-
-      <ScoreCard />
+{/* Deployed code */}
+      {
+        scoreCardFlag ? 
+        <ScoreCard 
+        setScoreCardValue={setScoreCardValue}
+        performance={performance}
+        >
+        </ScoreCard> : 
+        <BodyReact 
+          tabFlag={tabFlag} 
+          tabValue={tabValue} 
+          content={data} 
+          scoreCardValue={scoreCardFlag}
+          setScoreCardValue={setScoreCardValue}
+          setPerformanceData={setPerformanceData}>
+        </BodyReact>
+      }
+      
 
     </div>
   );
