@@ -1,7 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import {User} from '../App'
 import "./body-style.css";
 
 const BodyReact = (props) =>{
+
+    const user = useContext(User)
 
     const [tabFlag, setTabFlag] = useState(props.tabFlag)
     const [tabValue, setTabValue] = useState(props.tabValue)
@@ -12,6 +15,7 @@ const BodyReact = (props) =>{
     useEffect(()=>{
         setTabFlag(props.tabFlag)
         setTabValue(props.tabValue)
+        performance.time = props.tabValue / 60;
     }, [props.tabFlag, props.tabValue])
 
     useEffect(()=>{
@@ -80,21 +84,28 @@ const BodyReact = (props) =>{
     
 
 
-    const sendPerformanceData = async (data)=>{
-        const POST_URL = "http://localhost:3100/performance";
-
+    const sendPerformanceData = async ()=>{
+        if(user === undefined || user.username === "")  return;
+        const POST_URL = "http://localhost:3100/api/users/"+user.username+"/performance"
+        
         try{
-            const api = await fetch(POST_URL, {
-                method: 'POST',
+            
+            const response = await fetch(POST_URL, {
+                method: "POST", 
                 headers: { 'Content-Type': 'application/json',},
                 body: JSON.stringify(performance),
             })
 
-            console.log(api.status)
+            console.log(response.status);
+
         }
-        catch(e){
-            console.log("Can't POST Data on "+ POST_URL);
+        catch(err){
+            console.log("Can't post data on "+POST_URL);
         }
+        
+
+        console.log(POST_URL);
+
     }
 
 
@@ -146,7 +157,7 @@ const BodyReact = (props) =>{
         const keyPressed = event.key;
         
 
-        if(keyPressed === 'Backspace' && inputValue.replace(/^\s+|\s+$/gm,'').length === 0){
+        if(keyPressed === 'Backspace' && inputValue.replace(/^\s+|\s+$/gm,'').length === 0 && wordNo >= 1){
             console.log("hit");
             body.current.children[wordNo].style.backgroundColor = 'gray';
             body.current.children[wordNo].style.color  = 'rgba(240, 255, 255, 0.212)';
@@ -154,7 +165,7 @@ const BodyReact = (props) =>{
             body.current.children[wordNo + 1].style.backgroundColor  = '#3D4748';
             setwordNo(wordNo - 1);
         }
-        else if(keyPressed === 'Backspace'){
+        else if(keyPressed === 'Backspace' && wordNo >= 1){
             setPerformance(performance => (
                 {
                     ...performance,
@@ -208,7 +219,9 @@ const BodyReact = (props) =>{
                 </p>
             </div>
 
-            
+            {/* {
+                user.username
+            }             */}
 
             <div className='inputblock' onKeyDown={handleKeyPress} ref={body}>
                 <input 

@@ -1,14 +1,35 @@
 import './App.css';
-import React, {useState, useEffect} from 'react';
+
+import React, {useState, useEffect, useContext, createContext} from 'react';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+
 import Header from './Header/header'
 import OptionTab from './HomeBody/OptionsTab';
 import BodyReact from './Body/BodyMain';
 import ScoreCard from './ScoreCard/ScoreCardMain';
+import PageNotFound from './PageNotFound/Page404'
+import SigninSignup from './SigninSignup/SigninSignup';
+import LeaderBoard from './LeaderBoard/Score';
+import Profile from './Profile/ProfileMain'
+
+
+const User = createContext(null)
 
 function App() {
+
   const [tabFlag, setTabFlag] = useState("optiontab-time");
   const [tabValue, setTabValue] = useState(30);
   const [scoreCardFlag, setScoreCardFlag] = useState(false);
+
+  const [loginFlag, setLoginFlag] = useState(false);
+
+  const [profile, setProfile] = useState({
+    status: "false"
+  })
+
+  const changeProfile = (data)=>{
+    setProfile(data)
+  }
 
   const [performance, setPerformance] = useState({
     total_char: 0,                  // total correct or incorrect char
@@ -24,6 +45,10 @@ function App() {
 
   const setPerformanceData = (value) =>{
     setPerformance({...value})
+  }
+
+  const setLoginFlagValue = (val)=>{
+    setLoginFlag(val);
   }
 
   const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
@@ -66,33 +91,83 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
 
-      <OptionTab 
-        setTabFlagValue={setTabFlagValue} 
-        setFlagTabValue={setFlagTabValue}>
-      </OptionTab>
+      <BrowserRouter>
 
-      
+        <Header loginFlag={loginFlag}/>
 
-{/* Deployed code */}
-      {
-        scoreCardFlag ? 
-        <ScoreCard 
-        setScoreCardValue={setScoreCardValue}
-        performance={performance}
-        >
-        </ScoreCard> : 
-        <BodyReact 
-          tabFlag={tabFlag} 
-          tabValue={tabValue} 
-          content={data} 
-          scoreCardValue={scoreCardFlag}
-          setScoreCardValue={setScoreCardValue}
-          setPerformanceData={setPerformanceData}>
-        </BodyReact>
-      }
-      
+        <OptionTab 
+          setTabFlagValue={setTabFlagValue} 
+          setFlagTabValue={setFlagTabValue}>
+        </OptionTab>
+
+        <Routes>
+
+          <Route path='/' element={
+            scoreCardFlag ? 
+            <ScoreCard 
+              setScoreCardValue={setScoreCardValue}
+              performance={performance}
+            >
+            </ScoreCard> :
+              <User.Provider value={profile}>
+                <BodyReact 
+                  tabFlag={tabFlag} 
+                  tabValue={tabValue} 
+                  content={data} 
+                  scoreCardValue={scoreCardFlag}
+                  setScoreCardValue={setScoreCardValue}
+                  setPerformanceData={setPerformanceData}>
+                </BodyReact>
+              </User.Provider>
+          } />
+
+          <Route path="/test" 
+            element={
+              scoreCardFlag ? 
+            <ScoreCard 
+              setScoreCardValue={setScoreCardValue}
+              performance={performance}
+            >
+            </ScoreCard> : 
+              <User.Provider value={profile}>
+                <BodyReact 
+                  tabFlag={tabFlag} 
+                  tabValue={tabValue} 
+                  content={data} 
+                  scoreCardValue={scoreCardFlag}
+                  setScoreCardValue={setScoreCardValue}
+                  setPerformanceData={setPerformanceData}>
+                </BodyReact>  
+              </User.Provider>
+          }
+          ></Route>
+
+          <Route path="/login-signup" 
+            element={
+              <SigninSignup setLoginFlagValue={setLoginFlagValue} changeProfile={changeProfile}/>
+              }>
+          </Route>
+
+          <Route path="/leader-board" element={ <LeaderBoard/> }>
+          </Route>
+
+          <Route path="/user/profile" element={ 
+          <User.Provider value={profile}>
+            <Profile/> 
+          </User.Provider>
+          }>
+          </Route>
+
+
+          <Route  path="*"
+            element={<PageNotFound/>}
+          />
+
+
+        </Routes>
+      </BrowserRouter>
+
 
     </div>
   );
@@ -100,3 +175,4 @@ function App() {
 
 
 export default App;
+export {User};

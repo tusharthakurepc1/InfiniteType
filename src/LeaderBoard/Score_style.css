@@ -1,0 +1,50 @@
+h1{
+    color: #FFE500;
+
+}
+
+.leaderboard-container{
+    margin: 10px 40px;
+    list-style: none;
+}
+
+.leaderboard-card {
+    margin: 0px auto;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.rank {
+  width: 30px;
+  text-align: center;
+  font-weight: bold;
+  color: #f0a500; /* Yellow */
+  font-size: 1.2rem;
+}
+
+.user-info {
+  display: flex;
+  flex: 1;
+  margin-left: 1rem;
+  /* border: 1px solid red; */
+  
+}
+
+.user-detail{
+    margin: 0px auto;
+    width: 100%;
+}
+
+.username {
+  font-weight: bold;
+  color: #333;
+}
+
+.wpm, .acc, .time, .nationality {
+  color: #888;
+}

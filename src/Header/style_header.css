@@ -21,18 +21,16 @@
 }
 
 .bell-logo-img{
-    width: 1rem;
-    height: 1rem;
-    filter: invert(1);
+    width: 1.6rem;
+    height: 1.6rem;
 }
 .profile-logo-img{
-    width: 1.2rem;
-    height: 1.2rem;
-    filter: invert(1);
+    width: 1.6rem;
+    height: 1.6rem;
 }
 
 .setting-logo-img{
-    width: 1.2rem;
+    width: 1.6rem;
 }
 
 
@@ -45,3 +43,45 @@
     
 }
 
+.navigation-link {
+  color: #FFE500; 
+  height: 2rem;
+  padding: 5px 10px;
+  border: none;  
+  border-radius: 4px;  
+  text-decoration: none;  
+  font-weight: bold;  
+  display: inline-block;  
+  cursor: pointer;  
+  position: relative;  
+  align-content: center;
+}
+
+.navigation-link:hover {
+  border: 1px solid #FFE500;
+  transition: border 0.2s ease-in-out;
+}
+
+  
+
+
+.login-link {
+    color: #FFE500; 
+    background-color: rgb(99, 107, 104); 
+    height: 2rem;
+    padding: 5px 10px;  
+    border: none;  
+    border-radius: 4px;  
+    text-decoration: none; 
+    font-weight: bold;  
+    display: inline-block;  
+    cursor: pointer;  
+    align-content: center;
+  }
+  
+  .login-link:hover {
+    background-color: #ffd700;  
+    color: rgb(99, 107, 104);
+    transition: background-color 0.2s ease-in-out;  
+  }
+  

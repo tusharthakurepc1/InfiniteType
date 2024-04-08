@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect, getContext} from 'react';
+import User from '../App';
 import './scorecard-style.css'
 
 const ScoreCardMain = (props)=>{
