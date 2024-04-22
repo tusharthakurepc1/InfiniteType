@@ -5,16 +5,12 @@ import "./ProfileStyle.css"
 const ProfileMain = ()=>{
     const user = useContext(User)
 
-    // const displayProfile = ()=>{
-    //     console.log(safeProfileData);
-    // }
-
     return (
         <div className="profile-container">
           {
             user === null || user === undefined? 
             <></>:
-            <ul className="profile-details">
+            <ul className="user-profile-details">
                 
                 <div className='user-detail-profile'>
                     <span className='title'>Name</span>

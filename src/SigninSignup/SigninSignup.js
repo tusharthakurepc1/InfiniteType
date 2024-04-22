@@ -124,14 +124,14 @@ function LoginForm(props) {
       const data = {
         name: n,
         age: 0,
-        gender: "_",
-        country: "NULL",        
+        gender: "-",
+        country: "Indian",        
         username: em,
         password: pass,
-        performance: []
+        // performance: []
       }
 
-      props.setLoginFlagValue(true);
+      // props.setLoginFlagValue(true);
       console.log(signUpRequestSend(data));
       navigate("/login-signup")
 

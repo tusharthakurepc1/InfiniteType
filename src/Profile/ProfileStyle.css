@@ -1,6 +1,6 @@
 
 
-.profile-details {
+.user-profile-details {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -10,6 +10,7 @@
 }
 
 .user-detail-profile {
+  margin: 0px auto;
   width: 50%;
   padding: 5px 10px;
   border-radius: 4px; 

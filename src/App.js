@@ -76,7 +76,7 @@ function App() {
           const response = await fetch(URL)
           const res = await response.json()
   
-          setData(res.data[random(0, 3)].content)
+          setData(res.content)
         }
         catch(err){
           console.log(err);

@@ -17,10 +17,10 @@ const Header = (props) => {
                 <li><img className="logo" src={logo_infiniteType} alt='Error' /></li>
                 <li><Link to="/" className='default-link navigation-link'><img className='home-logo-img' src={home_logo} alt="Error" /></Link></li>
                 <li><Link to="/leader-board" className='default-link navigation-link'><img className='leaderboard-logo-img' src={leaderboard_logo} alt="Error" /></Link></li>
-                <li><Link to="/settings" className='default-link navigation-link'><img className='setting-logo-img' src={setting_logo} alt="Error" /></Link></li>
+                {/* <li><Link to="/settings" className='default-link navigation-link'><img className='setting-logo-img' src={setting_logo} alt="Error" /></Link></li> */}
             </ul>
             <ul className='header-right'>
-                <li><Link to="/user/notifications" className='default-link navigation-link'><img className='bell-logo-img' src={bell_logo} alt="Error" /></Link></li>
+                {/* <li><Link to="/user/notifications" className='default-link navigation-link'><img className='bell-logo-img' src={bell_logo} alt="Error" /></Link></li> */}
                 {props.loginFlag ? (
                     <>
                         <li><Link to="/user/profile" className='default-link navigation-link'><img className='profile-logo-img' src={profile_logo} alt="Error" /></Link></li>
